@@ -25,6 +25,7 @@ $language = array (
   'profile_manager:settings:other' => 'Overige',
   'profile_manager:settings:profile_icon_on_register' => 'Verplicht de upload van een avatar op het registratie formulier',
   'profile_manager:settings:show_account_hints' => 'Toon hints bij de standaard account velden op het registratie formulier',
+  'profile_manager:settings:enforce_completion_mandatory_fields' => 'Forceer invullen van verplichte velden',
   'profile_manager:settings:simple_access_control' => 'Toon slechts één toegangsrecht keuze op het profiel bewerken formulier',
   'profile_manager:settings:default_profile_type' => 'Standaard profiel type bij registratie',
   'profile_manager:settings:hide_profile_type_default' => 'Verberg het \'Standaard\' profiel type bij registratie',
@@ -268,5 +269,8 @@ $language = array (
   'profile_manager:account:login_history' => 'Aanmeld geschiedenis',
   'profile_manager:account:login_history:date' => 'Datum',
   'profile_manager:account:login_history:ip' => 'IP Adres',
+  'profile_manager:complete:title' => 'Profiel aanvullen',
+  'profile_manager:complete:description' => 'In je profiel ontbreken een aantal verplichte velden. We vragen je vriendelijk deze velden in te vullen.'
+
 );
 add_translation("nl", $language);

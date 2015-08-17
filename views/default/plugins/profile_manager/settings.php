@@ -103,6 +103,14 @@ $group_limit_options = array(
 		</td>
 	</tr>
 	<tr>
+		<td>
+			<?php echo elgg_echo('profile_manager:settings:enforce_completion_mandatory_fields'); ?>
+		</td>
+		<td>
+			<?php echo elgg_view("input/dropdown", array("name" => "params[enforce_completion_mandatory_fields]", "options_values" => $noyes_options, "value" => $vars['entity']->enforce_completion_mandatory_fields)); ?>
+		</td>
+	</tr>
+	<tr>
 		<td colspan="2">
 			<?php echo elgg_echo('profile_manager:settings:registration:terms'); ?>
 		</td>

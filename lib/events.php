@@ -256,3 +256,68 @@ function profile_manager_description_edit_increment($event, $object_type, $objec
 	// only do this once
 	elgg_unregister_event_handler("update", "group", "profile_manager_description_edit_increment");
 }
+
+/**
+ * Check if user filled in all required fields (when enabled )
+ *
+ * @param string     $event       Event name
+ * @param string     $object_type Event type
+ * @param ElggObject $object      Group that is being edited
+ *
+ * @return void
+ */
+function profile_manager_pagesetup_event($event, $object_type, $object) {
+	// do not override js and css views
+	if (get_input('handler')) {
+		return true;
+	}
+
+	$user = elgg_get_logged_in_user_entity();
+	$site = elgg_get_site_entity();
+
+	if (!$user | !$site) {
+		return true;
+	}
+
+	if (!$site->isUser() | $site->isAdmin()) {
+		return true;
+	}
+
+	if (elgg_get_plugin_setting('enforce_completion_mandatory_fields', 'profile_manager') != 'yes') {
+		return true;
+	}
+
+	if (isset($_SESSION['profile_manager_complete'])) {
+		if (in_array($site->guid, $_SESSION['profile_manager_complete'])) {
+			return true;
+		} else {
+			array_push($_SESSION['profile_manager_complete'], $site->guid);
+		}
+	} else {
+		$_SESSION['profile_manager_complete'] = array();
+		array_push($_SESSION['profile_manager_complete'], $site->guid);
+	}
+
+	if (count(profile_manager_get_unfilled_mandatory_fields($user)) > 0) {
+		forward('/profile_manager/complete?redirect_uri=' . $_SERVER['REQUEST_URI']);
+	}
+
+	return true;
+}
+
+/**
+ * Remove session variable from profile manager on logout
+ *
+ * @param string     $event       Event name
+ * @param string     $object_type Event type
+ * @param ElggObject $object      User that is logging out
+ *
+ * @return void
+ */
+function profile_manager_logout_user_event($event, $object_type, $object) {
+	if (isset($_SESSION['profile_manager_complete'])) {
+		unset($_SESSION['profile_manager_complete']);
+	}
+
+	return true;
+}

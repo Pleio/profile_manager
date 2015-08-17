@@ -40,6 +40,7 @@ $english = array(
 
 	'profile_manager:settings:profile_icon_on_register' => 'Add mandatory profile icon input field on register form',
 	'profile_manager:settings:show_account_hints' => 'Show hints for default account registration questions',
+	'profile_manager:settings:enforce_completion_mandatory_fields' => 'Enforce field completion for required fields',
 	'profile_manager:settings:simple_access_control' => 'Show just one access control dropdown on edit profile form',
 	'profile_manager:settings:default_profile_type' => "Default profile type on registration form",
 	'profile_manager:settings:hide_profile_type_default' => "Hide the 'Default' profile type on registration form",
@@ -410,7 +411,10 @@ $english = array(
 	'profile_manager:account:login_history' => "Login History",
 	'profile_manager:account:login_history:date' => "Date",
 	'profile_manager:account:login_history:ip' => "IP Address",
-	
+
+	// complete mandatory fields
+	'profile_manager:complete:title' => 'Complete profile',
+	'profile_manager:complete:description' => 'Your profile is missing some mandatory fields. We kindly ask you to fill in these details.'
 
 );
 

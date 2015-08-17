@@ -101,6 +101,9 @@ function profile_manager_init() {
 	// register hook for saving the new username
 	elgg_register_plugin_hook_handler('usersettings:save', 'user', 'profile_manager_username_change_hook');
 	
+	// system ready event
+	elgg_register_event_handler('pagesetup', 'system', 'profile_manager_pagesetup_event');
+
 	// site join event handler
 	elgg_register_event_handler("create", "member_of_site", "profile_manager_create_member_of_site");
 	
@@ -138,10 +141,12 @@ function profile_manager_page_handler($page) {
 				}
 				$result = array("valid" => $valid);
 				echo json_encode($result);
-				
 				return true;
 			}
 			break;
+		case "complete":
+			include(dirname(__FILE__) . "/pages/complete.php");
+			return true;
 		case "user_summary_control":
 			include(dirname(__FILE__) . "/pages/user_summary_control/preview.php");
 			return true;
@@ -177,6 +182,7 @@ elgg_register_event_handler('pagesetup', 'system', 'profile_manager_pagesetup');
 
 elgg_register_event_handler('create', 'user', 'profile_manager_create_user_event');
 elgg_register_event_handler('profileupdate','user', 'profile_manager_profileupdate_user_event');
+elgg_register_event_handler('logout', 'user', 'profile_manager_logout_user_event');
 
 elgg_register_plugin_hook_handler('profile:fields', 'profile', 'profile_manager_profile_override');
 elgg_register_plugin_hook_handler('profile:fields', 'group', 'profile_manager_group_override');
@@ -211,4 +217,5 @@ elgg_register_action("profile_manager/user_summary_control/save", dirname(__FILE
 elgg_register_action("profile_manager/users/export_inactive", dirname(__FILE__) . "/actions/users/export_inactive.php", "admin");
 
 elgg_register_action("profile_manager/register/validate", dirname(__FILE__) . "/actions/register/validate.php", "public");
-	
+
+elgg_register_action("profile_manager/complete", dirname(__FILE__) . "/actions/complete.php");

@@ -338,6 +338,39 @@ function profile_manager_get_categorized_fields($user = null, $edit = false, $re
 }
 
 /**
+ * Check if a user filled in all mandatory fields
+ *
+ * @param ElggUser $user               User to check
+ * @return bool
+ */
+function profile_manager_get_unfilled_mandatory_fields($user = null) {
+
+	if (!$user) {
+		$user = elgg_get_logged_in_user_entity();
+	}
+
+	if (!$user) {
+		return array();
+	}
+
+	$fields = profile_manager_get_categorized_fields($user, true);
+
+	$return = array();
+	foreach ($fields['fields'] as $category) {
+		foreach ($category as $field) {
+			if ($field->mandatory == 'yes' && $field->show_on_register == 'yes') {
+				$metadata_name = $field->metadata_name;
+				if (!isset($user->$metadata_name)) {
+					$return[] = $field;
+				}
+			}
+		}
+	}
+
+	return $return;
+}
+
+/**
  * Function just now returns only ordered (name is prepped for future release which should support categories)
  *
  * @param ElggGroup $group Group to check the values of the fields against
