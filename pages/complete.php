@@ -16,7 +16,11 @@ $content .= elgg_view_form('profile_manager/complete', array(), array(
     'fields' => $unfilled_fields
 ));
 
-echo elgg_view_page($title, elgg_view_layout("one_column", array(
+elgg_extend_view("page/elements/sidebar", "profile_manager/complete/sidebar");
+
+echo elgg_view_page($title, elgg_view_layout("one_sidebar", array(
     'title' => elgg_echo('profile_manager:complete:title'),
+    'filter_context' => '',
     'content' => $content
+
 )));

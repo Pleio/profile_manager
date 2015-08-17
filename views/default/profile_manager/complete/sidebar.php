@@ -1,0 +1,2 @@
+<?php
+// overwritable sidebar
