@@ -279,7 +279,7 @@ function profile_manager_pagesetup_event($event, $object_type, $object) {
 		return true;
 	}
 
-	if (!$site->isUser() | $site->isAdmin()) {
+	if (!check_entity_relationship($user->guid, "member_of_site", $site->guid)) {
 		return true;
 	}
 
