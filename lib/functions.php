@@ -353,12 +353,15 @@ function profile_manager_get_unfilled_mandatory_fields($user = null) {
 		return array();
 	}
 
-	$fields = profile_manager_get_categorized_fields($user, true);
+	$fields = profile_manager_get_categorized_fields($user, true, true);
 
 	$return = array();
 	foreach ($fields['fields'] as $category) {
 		foreach ($category as $field) {
-			if ($field->mandatory == 'yes' && $field->show_on_register == 'yes') {
+			if (
+				($field->getVolatileData('mandatory') == 'yes' && $field->getVolatileData('show_on_register') == 'yes') |
+				($field->mandatory == 'yes' && $field->show_on_register == 'yes')
+			) {
 				$metadata_name = $field->metadata_name;
 				if (!isset($user->$metadata_name)) {
 					$return[] = $field;
