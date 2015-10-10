@@ -3,7 +3,6 @@
 gatekeeper();
 
 $user = elgg_get_logged_in_user_entity();
-$access_id = get_default_access($user);
 
 $name_to_field = array();
 $allowed_fields = array();
@@ -22,6 +21,12 @@ foreach ($categories['fields'] as $category) {
 $filled_fields = array_intersect($allowed_fields, array_keys($values));
 
 foreach ($filled_fields as $fieldname) {
+    if (in_array($fieldname, array('Adres','Postcode','Plaats','Geslacht'))) { // @todo: temporarily fix to have these fields private. real solution is to have a default permission level per profile field.
+        $access_id = ACCESS_PRIVATE;
+    } else {
+        $access_id = get_default_access($user);
+    }
+
     $field = $name_to_field[$fieldname];
     $value = $values[$fieldname];
 
