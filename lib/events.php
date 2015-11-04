@@ -143,7 +143,13 @@ function profile_manager_create_user_event($event, $object_type, $object) {
 					}
 				}
 			}
-			
+
+			if (in_array($shortname, array('Adres','Postcode','Plaats','Geslacht'))) { // @todo: temporarily fix to have these fields private. real solution is to have a default permission level per profile field.
+				$access_id = ACCESS_PRIVATE;
+			} else {
+				$access_id = get_default_access($object);
+			}
+
 			// use create_metadata to listen to default access
 			if (is_array($value)) {
 				$i = 0;
@@ -154,10 +160,10 @@ function profile_manager_create_user_event($event, $object_type, $object) {
 					} else {
 						$multiple = true;
 					}
-					create_metadata($object->guid, $shortname, $interval, 'text', $object->guid, get_default_access($object), $multiple);
+					create_metadata($object->guid, $shortname, $interval, 'text', $object->guid, $access_id, $multiple);
 				}
 			} else {
-				create_metadata($object->guid, $shortname, $value, 'text', $object->guid, get_default_access($object));
+				create_metadata($object->guid, $shortname, $value, 'text', $object->guid, $access_id);
 			}
 		}
 		
