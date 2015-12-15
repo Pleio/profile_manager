@@ -21,7 +21,11 @@ foreach ($categories['fields'] as $category) {
 $filled_fields = array_intersect($allowed_fields, array_keys($values));
 
 foreach ($filled_fields as $fieldname) {
-    if (in_array($fieldname, array('Adres','Postcode','Plaats','Geslacht'))) { // @todo: temporarily fix to have these fields private. real solution is to have a default permission level per profile field.
+    $accesslevel = get_input('accesslevel');
+
+    if ($accesslevel && array_key_exists($fieldname, $accesslevel)) {
+        $access_id = $accesslevel[$fieldname];
+    } elseif (in_array($fieldname, array('Adres','Postcode','Plaats','Geslacht'))) { // @todo: temporarily fix to have these fields private. real solution is to have a default permission level per profile field.
         $access_id = ACCESS_PRIVATE;
     } else {
         $access_id = get_default_access($user);
