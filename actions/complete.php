@@ -9,7 +9,7 @@ $allowed_fields = array();
 
 $values = get_input('custom_profile_fields');
 
-$categories = profile_manager_get_categorized_fields($user, true);
+$categories = profile_manager_get_categorized_fields($user, true, true);
 foreach ($categories['fields'] as $category) {
     foreach ($category as $field) {
         $name_to_field[$field->metadata_name] = $field;
