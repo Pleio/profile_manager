@@ -70,7 +70,8 @@ if (!empty($fieldtype) && !empty($fields)) {
 				"relationship" => "member",
 				"joins" => array("JOIN " . elgg_get_config("dbprefix") . "groups_entity ge ON e.guid = ge.guid"),
 				"inverse_relationship" => false,
-				"callback" => "profile_manager_export_group_name"
+				"callback" => "profile_manager_export_group_name",
+				"limit" => 50
 			);
 		
 		$entities = new ElggBatch('elgg_get_entities_from_relationship', $options);
