@@ -259,36 +259,6 @@ $group_limit_options = array(
 		<td colspan="2">
 			<div class='elgg-module-inline'>
 				<div class='elgg-head'>
-				<h3><?php echo elgg_echo("profile_manager:settings:group"); ?></h3>
-				</div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<?php echo elgg_echo('profile_manager:settings:group:group_limit_name'); ?>
-		</td>
-		<td>
-			<?php echo elgg_view("input/dropdown", array("name" => "params[group_limit_name]", "options_values" => $group_limit_options, "value" => $vars['entity']->group_limit_name)); ?>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<?php echo elgg_echo('profile_manager:settings:group:group_limit_description'); ?>
-		</td>
-		<td>
-			<?php echo elgg_view("input/dropdown", array("name" => "params[group_limit_description]", "options_values" => $group_limit_options, "value" => $vars['entity']->group_limit_description)); ?>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2" class="elgg-subtext">
-			<?php echo elgg_echo("profile_manager:settings:group:limit:info"); ?>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<div class='elgg-module-inline'>
-				<div class='elgg-head'>
 				<h3><?php echo elgg_echo("profile_manager:settings:other"); ?></h3>
 				</div>
 			</div>
