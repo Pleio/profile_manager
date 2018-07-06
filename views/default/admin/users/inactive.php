@@ -40,31 +40,31 @@ if (!empty($users)) {
 	$content .= "<th>" . elgg_echo("usersettings:statistics:label:lastlogin") . "</th>";
 	$content .= "<th>" . elgg_echo("banned") . "</th>";
 	$content .= "</tr>";
-	
+
 	foreach ($users as $user) {
 		$content .= "<tr>";
 		$content .= "<td>" . elgg_view("output/url", array("text" => $user->name, "href" => $user->getURL())) . "</td>";
-		$last_login = $user->last_login;
-		if (empty($last_login)) {
+		$user_last_login = $user->last_login;
+		if (empty($user_last_login)) {
 			$content .= "<td>" . elgg_echo("profile_manager:admin:users:inactive:never") . "</td>";
 		} else {
-			$content .= "<td>" . elgg_view_friendly_time($last_login) . "</td>";
+			$content .= "<td>" . elgg_view_friendly_time($user_last_login) . "</td>";
 		}
 		$content .= "<td>" . elgg_echo("option:" . $user->banned) . "</td>";
 		$content .= "</tr>";
 	}
-	
+
 	$content .= "</table>";
-	
+
 	$options["count"] = true;
 	$count = elgg_get_entities_from_relationship($options);
-	
+
 	$content .= elgg_view("navigation/pagination", array("offset" => $offset, "limit" => $limit, "count" => $count));
-	
+
 	$download_link = elgg_add_action_tokens_to_url("/action/profile_manager/users/export_inactive?last_login=" . $last_login);
-	
+
 	$content .= "<br />" . elgg_view("input/button", array("value" => elgg_echo("profile_manager:admin:users:inactive:download"), "onclick" => "document.location.href='" . $download_link . "'", "class" => "elgg-button-action"));
-	
+
 } else {
 	$content = elgg_echo("notfound");
 }
