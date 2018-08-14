@@ -48,7 +48,8 @@ if ($fields) {
 				"time_updated" => 0,
 				"last_login" => 0,
 				"validated" => 0,
-				"validated_method" => 0
+				"validated_method" => 0,
+				"banned" => 0
 		);
 		$fields = $default_fields + $fields;
 	}
@@ -71,14 +72,14 @@ if ($fields) {
 		<?php
 	}
 	echo "</table>";
-	
+
 	if (elgg_is_active_plugin("groups") && ($fieldtype == CUSTOM_PROFILE_FIELDS_PROFILE_SUBTYPE)) {
 		echo "<div class='mbm'>";
 		echo elgg_view("input/checkbox", array("name" => "include_group_membership"));
 		echo " " . elgg_echo("profile_manager:export:list:include_group_membership");
 		echo "</div>";
 	}
-	
+
 	// buttons
 	echo elgg_view("input/submit", array("value" => elgg_echo("export")));
 	echo "</form>";
