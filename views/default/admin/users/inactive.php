@@ -65,6 +65,18 @@ if (!empty($users)) {
 
 	$content .= "<br />" . elgg_view("input/button", array("value" => elgg_echo("profile_manager:admin:users:inactive:download"), "onclick" => "document.location.href='" . $download_link . "'", "class" => "elgg-button-action"));
 
+
+	$block_users_link = elgg_add_action_tokens_to_url("/action/profile_manager/users/block_inactive?last_login=" . $last_login);
+	$confirm_message =  elgg_echo("profile_manager:admin:users:inactive:confirm_block_users") . date("Y-m-d", $last_login);
+	$delete_link = elgg_view("output/confirmlink", array(
+		"text" =>  elgg_echo("profile_manager:admin:users:inactive:block_users"),
+		"class" => "elgg-button elgg-button-submit float-alt mvs",
+		"title" => elgg_echo("delete"),
+		"confirm" => $confirm_message,
+		"href" => $block_users_link ));
+
+	$content .= $delete_link;
+
 } else {
 	$content = elgg_echo("notfound");
 }

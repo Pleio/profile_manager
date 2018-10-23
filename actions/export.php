@@ -14,12 +14,12 @@ global $DB_QUERY_CACHE;
 $DB_QUERY_CACHE = false; // no need for cache. Will only cause OOM issues
 
 set_time_limit(0);
-	
+
 $filename = 'export.csv';
-	
+
 $fieldtype = get_input("fieldtype");
 $fields = get_input("export");
-	
+
 header("Pragma: public");
 header("Expires: 0");
 header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
@@ -32,29 +32,29 @@ header("Content-Transfer-Encoding: binary");
 ob_start();
 
 $df = fopen("php://output", 'w');
-	
+
 if (!empty($fieldtype) && !empty($fields)) {
 	if ($fieldtype == CUSTOM_PROFILE_FIELDS_PROFILE_SUBTYPE || $fieldtype == CUSTOM_PROFILE_FIELDS_GROUP_SUBTYPE) {
 		$options = array(
 			"limit" => false
 		);
-		
+
 		if ($fieldtype == CUSTOM_PROFILE_FIELDS_PROFILE_SUBTYPE) {
 			$type = "user";
 			$options["relationship"] = "member_of_site";
 			$options["relationship_guid"] = elgg_get_site_entity()->getGUID();
 			$options["inverse_relationship"] = true;
 			$options["site_guids"] = false;
-			
+
 			if (get_input("include_group_membership")) {
 				$include_groups = true;
 			}
 		} else {
 			$type = "group";
 		}
-			
+
 		$options["type"] = $type;
-		
+
 		$headers = array();
 		foreach ($fields as $field) {
 			$headers[] = $field;
@@ -63,7 +63,7 @@ if (!empty($fieldtype) && !empty($fields)) {
 			$headers[] = "group membership";
 		}
 		fputcsv($df, $headers, ";");
-		
+
 		$group_options = array (
 				"selects" => array("ge.name"),
 				"type" => "group",
@@ -73,7 +73,7 @@ if (!empty($fieldtype) && !empty($fields)) {
 				"callback" => "profile_manager_export_group_name",
 				"limit" => 50
 			);
-		
+
 		$entities = new ElggBatch('elgg_get_entities_from_relationship', $options);
 		if (!empty($entities)) {
 			foreach ($entities as $entity) {
@@ -88,16 +88,16 @@ if (!empty($fieldtype) && !empty($fields)) {
 				if ($include_groups) {
 					$group_options["relationship_guid"] = $entity->guid;
 					$groups = elgg_get_entities_from_relationship($group_options);
-					
+
 					$groups_text = implode(",", $groups);
-					
+
 					$row[] = "$groups_text";
 				}
 				fputcsv($df, $row, ";");
 			}
 		}
 	}
-		
+
 	fclose($df);
 
 	echo ob_get_clean();

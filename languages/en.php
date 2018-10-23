@@ -11,7 +11,7 @@
 */
 
 $english = array(
-				
+
 	// entity names
 	'item:object:custom_profile_field' => 'Custom Profile Field',
 	'item:object:custom_profile_field_category' => 'Custom Profile Field Category',
@@ -19,7 +19,7 @@ $english = array(
 	'item:object:custom_group_field' => 'Custom Group Field',
 
 	'profile:custom_profile_type' => 'Custom Profile Type',
-	
+
 	// admin menu
 	'admin:appearance:group_fields' => "Edit Group Fields",
 	'admin:appearance:export_fields' => "Export Profile Data",
@@ -27,7 +27,7 @@ $english = array(
 
 	'admin:groups' => "Groups",
 	'admin:groups:export' => "Export groups",
-	
+
 	'admin:users:export' => "Export users",
 	'admin:users:inactive' => "List inactive users",
 
@@ -65,7 +65,7 @@ $english = array(
 
 	'profile_manager:settings:description_position' => 'Where to position the description ("About me") field',
 	'profile_manager:settings:user_summary_control' => 'Let Profile Manager control the user summary / listing view',
-	
+
 	'profile_manager:settings:enable_profile_completeness' => "Enable profile completeness information",
 	'profile_manager:settings:enable_profile_completeness:option:widget' => "Show in a widget",
 	'profile_manager:settings:enable_profile_completeness:option:profile_details' => "Show above profile details",
@@ -75,20 +75,20 @@ $english = array(
 	'profile_manager:settings:enable_username_change' => "Allow users to change their username in settings",
 	'profile_manager:settings:enable_username_change:option:admin' => "Admin only",
 	'profile_manager:settings:enable_site_join_river_event' => "Add a river event when people join this site",
-	
+
 	'profile_manager:settings:registration:terms' => "To show an 'Accept terms' field on the registration page, please fill in the URL to the terms below",
 	'profile_manager:settings:registration:extra_fields' => "Where to show extra profile fields",
 	'profile_manager:settings:registration:extra_fields:extend' => "Below default registration form",
 	'profile_manager:settings:registration:extra_fields:beside' => "Beside registration form",
 	'profile_manager:settings:registration:free_text' => "Enter extra text to show on the registration page",
-	
-	
+
+
 	'profile_manager:settings:group:group_limit_name' => "Maximum number of times a group name can be edited",
 	'profile_manager:settings:group:group_limit_description' => "Maximum number of times a group description can be edited",
 	'profile_manager:settings:group:limit:unlimited' => "Unlimited",
 	'profile_manager:settings:group:limit:never' => "Never",
 	'profile_manager:settings:group:limit:info' => "These limits do not apply to site administrators",
-	
+
 	// Field Configuration
 	'profile_manager:admin:metadata_name' => 'Name',
 	'profile_manager:admin:metadata_label' => 'Label',
@@ -105,7 +105,7 @@ $english = array(
 	'profile_manager:admin:options:multiselect' => 'MultiSelect',
 	'profile_manager:admin:options:file' => 'File',
 	'profile_manager:admin:options:pm_rating' => 'Rating',
-	
+
 	'profile_manager:admin:additional_options' => 'Additional options',
 	'profile_manager:admin:show_on_register' => 'Show on register form',
 	'profile_manager:admin:mandatory' => 'Mandatory',
@@ -128,7 +128,7 @@ $english = array(
 	'profile_manager:profile_fields:list:title' => "Profile Fields",
 
 	'profile_manager:profile_fields:no_fields' => "Currently no fields are configured using the Profile Manager plugin. Add your own or import with one of the actions below.",
-	
+
 	'profile_manager:profile_fields:add' => "Add a new profile field",
 	'profile_manager:profile_fields:edit' => "Edit a profile field",
 	'profile_manager:profile_fields:add:description' => "Here you can edit the fields a user can edit on his/her profile",
@@ -149,7 +149,7 @@ $english = array(
 	'profile_manager:categories:list:view_all' => "View all fields",
 	'profile_manager:categories:list:no_categories' => "No categories defined",
 	'profile_manager:categories:delete:confirm' => "Are you sure you wish to delete this category?",
-	
+
 	// Custom Profile Types
 	'profile_manager:profile_types:add' => "Add a new profile type",
 	'profile_manager:profile_types:edit' => "Edit a profile type",
@@ -157,26 +157,28 @@ $english = array(
 	'profile_manager:profile_types:list:no_types' => "No profile types defined",
 	'profile_manager:profile_types:delete:confirm' => "Are you sure you wish to delete this profile type?",
 	'profile_manager:user_details:profile_type' => "Profile Type",
-	
+
 	// User Summary Control
 	'profile_manager:user_summary_control:config' => "Configuration",
 	'profile_manager:user_summary_control:info' => "Add fields to the different containers and see in the preview the result of the configuration. If you are satisfied you can 'Save' the configuration.",
-	
+
 	'profile_manager:user_summary_control:container:title' => "Title",
 	'profile_manager:user_summary_control:container:entity_menu' => "Entity Menu",
 	'profile_manager:user_summary_control:container:subtitle' => "Subtitle",
 	'profile_manager:user_summary_control:container:content' => "Content",
-	
+
 	'profile_manager:user_summary_control:options:spacers' => "Spacers",
 	'profile_manager:user_summary_control:options:spacers:new_line' => "New line",
 	'profile_manager:user_summary_control:options:spacers:space' => "Space",
 	'profile_manager:user_summary_control:options:spacers:dash' => "-",
-	
+
 	// profile manager inactive users
 	'profile_manager:admin:users:inactive:last_login' => "Last login before",
 	'profile_manager:admin:users:inactive:list' => "Inactive users",
 	'profile_manager:admin:users:inactive:never' => "Never",
 	'profile_manager:admin:users:inactive:download' => "Download",
+	'profile_manager:admin:users:inactive:block_users' => "Block inactive users",
+	'profile_manager:admin:users:inactive:confirm_block_users' => "Block all inactive users, are you sure? Inactive users will be blocked if inactive since ",
 
 	// admin actions
 	'profile_manager:actions:title' => 'Actions',
@@ -215,13 +217,13 @@ $english = array(
 
 	// Group Edit
 	'profile_manager:group:edit:limit' => "You can edit this field %s more time(s)",
-	
+
 	// Configuration Backup and Restore
 	'profile_manager:actions:configuration:backup' => "Backup",
 	'profile_manager:actions:configuration:backup:description' => "Backup the configuration of these fields (categories and types are not backed up)",
 	'profile_manager:actions:configuration:restore' => "Restore",
 	'profile_manager:actions:configuration:restore:description' => "Restore a previously backed up configuration file (<b>you will loose relations between fields and categories</b>)",
-	
+
 	'profile_manager:actions:configuration:restore:upload' => "Restore",
 
 	'profile_manager:actions:restore:success' => "Restore successful",
@@ -238,7 +240,7 @@ $english = array(
 	'profile_manager:actions:new:error:metadata_options' => 'You need to enter options when using this type',
 	'profile_manager:actions:new:error:unknown' => 'Unknown error occurred when saving a new custom profile field',
 	'profile_manager:action:new:error:type' => 'Wrong profile field type (group or profile)',
-	
+
 	// edit
 	'profile_manager:actions:edit:error:unknown' => 'Error fetching profile field data',
 
@@ -269,13 +271,13 @@ $english = array(
 	'profile_manager:action:profile_types:add:error:object' => "Error while creating the Custom Profile Type",
 	'profile_manager:action:profile_types:add:error:save' => "Error while saving the Custom Profile Type",
 	'profile_manager:action:profile_types:add:succes' => "The Custom profile Type was created succesfully",
-	
+
 	// delete profile type
 	'profile_manager:action:profile_types:delete:error:guid' => "No GUID provided",
 	'profile_manager:action:profile_types:delete:error:type' => "The provided GUID is not an Custom Profile Type",
 	'profile_manager:action:profile_types:delete:error:delete' => "An unknown error occured while deleting the Custom Profile Type",
 	'profile_manager:action:profile_types:delete:succes' => "The Custom Profile Type was deleted succesfully",
-	
+
 	// change username action
 	'profile_manager:action:username:change:succes' => "Successfully changed your username",
 
@@ -291,16 +293,16 @@ $english = array(
 	'profile_manager:tooltips:profile_field_additional' => "
 		<b>Show on register</b><br />
 		If you want this field to be on the register form.<br /><br />
-		
+
 		<b>Mandatory</b><br />
 		If you want this field to be mandatory (only applies to the register form).<br /><br />
-		
+
 		<b>User editable</b><br />
 		If set to 'No' users can't edit this field (handy when data is managed in an external system).<br /><br />
-		
+
 		<b>Show as tags</b><br />
 		Data output will be handle as tags (only applies on user profile).<br /><br />
-		
+
 		<b>Admin only field</b><br />
 		Select 'Yes' if field is only available for admins.
 	",
@@ -308,21 +310,21 @@ $english = array(
 		<b>Category</b><br />
 		Here you can add a new profile category.<br /><br />
 		If you leave the label empty, you can internationalize the category label (<i>profile:categories:[name]</i>).<br /><br />
-		
+
 		If Profile Types are defined you can choose on which profile type this category applies. If no profile is specified, the category applies to all profile types (even undefined).
 	",
 	'profile_manager:tooltips:category_list' => "
 		<b>Categories</b><br />
 		Shows a list of all configured categories.<br /><br />
-		
+
 		<i>Default</i> is the category that applies to all profiles.<br /><br />
-		
+
 		Add fields to these categories by dropping them on the categories.<br /><br />
-		
+
 		Click the category label to filter the visible fields. Clicking view all fields shows all fields.<br /><br />
-		
+
 		You can also change the order of the categories by dragging them (<i>Default can't be dragged</i>. <br /><br />
-		
+
 		Click the edit icon to edit the category.
 	",
 	'profile_manager:tooltips:profile_type' => "
@@ -330,7 +332,7 @@ $english = array(
 		Here you can add a new profile type.<br /><br />
 		If you leave the label empty, you can internationalize the profile type label (<i>profile:types:[name]</i>).<br /><br />
 		Enter a description which users can see when selecting this profile type or leave it empty to internationalize (<i>profile:types:[name]:description</i>).<br /><br />
-		
+
 		If Categories are defined you can choose which categories apply to this profile type.
 	",
 	'profile_manager:tooltips:profile_type_list' => "
@@ -348,7 +350,7 @@ $english = array(
 	'widgets:profile_completeness:description' => 'Show the profile completeness',
 	'widgets:profile_completeness:view:tips' => 'Tip! Update your %s to improve the Profile Completeness.',
 	'widgets:profile_completeness:view:complete' => 'Congratulations! Your profile is 100% complete!',
-	
+
 	'widgets:register:title' => "Register",
 	'widgets:register:description' => "Show a register box",
 	'widgets:register:loggedout' => "You need to be logged out to use this widget",
@@ -369,7 +371,7 @@ $english = array(
 
 	// non_editable
 	'profile_manager:non_editable:info' => 'This field can not be edited',
-	
+
 	// register form mandatory notice
 	'profile_manager:register:mandatory' => "Items marked with a * are mandatory",
 
@@ -379,10 +381,10 @@ $english = array(
 	'profile_manager:register:hints:email' => "This emailadres will be used to send you mails. Other users can not see this emailadres",
 	'profile_manager:register:hints:password' => "You will need a password to login to the site",
 	'profile_manager:register:hints:passwordagain' => "Enter the same password again for validation",
-	
+
 	// register profile icon
 	'profile_manager:register:profile_icon' => 'This site requires you to upload a profile icon',
-	
+
 	// register accept terms
 	'profile_manager:registration:accept_terms' => "I have read and accept the %sTerms of Service%s",
 
@@ -399,11 +401,11 @@ $english = array(
 	'profile_manager:admin:adduser:notify' => "Notify user",
 	'profile_manager:admin:adduser:use_default_access' => "Extra metadata created based on site default access level",
 	'profile_manager:admin:adduser:extra_metadata' => "Add extra profile data",
-	
+
 	// change username form
 	'profile_manager:account:username:button' => "Click to change your username",
 	'profile_manager:account:username:info' => "Change your username. An icon will tell you if the username entered is valid and available.",
-	
+
 	// river events
 	'river:join:site:default' => '%s joined the site',
 
@@ -419,4 +421,3 @@ $english = array(
 );
 
 add_translation("en", $english);
-	

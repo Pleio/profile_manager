@@ -118,6 +118,8 @@ $language = array (
   'profile_manager:admin:users:inactive:list' => 'Inactive gebruikers',
   'profile_manager:admin:users:inactive:never' => 'Nooit',
   'profile_manager:admin:users:inactive:download' => 'Download',
+  'profile_manager:admin:users:inactive:block_users' => "Blokkeer inactieve gebruikers",
+	'profile_manager:admin:users:inactive:confirm_block_users' => "Alle inactieve gebruikers blokkeren, weet u het zeker? Gebruikers worden geblokkeerd wanneer inactief sinds ",
   'profile_manager:actions:title' => 'Acties',
   'profile_manager:actions:reset:description' => 'Verwijderd alle custom profiel velden.',
   'profile_manager:actions:reset:confirm' => 'Weet je zeker dat je alle velden wilt verwijderen?',
@@ -189,41 +191,41 @@ $language = array (
 			Opties zijn alleen verplicht voor de veldtypes <i>Dropdown, Radio and MultiSelect</i>.',
   'profile_manager:tooltips:profile_field_additional' => '<b>Toon op registreer formulier</b><br>
 			Indien het veld ook op het registratie formulier ingevuld kan worden.<br><br>
-			
+
 			<b>Verplicht</b><br>
 			Indien het veld verplicht moet worden ingevuld (dit geldt alleen op het registratie formulier).<br><br>
-			
+
 			<b>Bewerkbaar door gebruiker</b><br>
 			Indien \'Nee\' kunnen gebruikers dit veld niet bewerken (handig als de data uit een extern systeem komt).<br><br>
-			
+
 			<b>Toon als tags</b><br>
 			Data output zal worden behandeld als tags (alleen van toepassing op profiel weergave).<br><br>
-			
+
 			<b>Alleen voor beheerders</b><br>
 			Kies \'Ja\' indien het veld alleen zichtbaar is voor beheerders.',
   'profile_manager:tooltips:category' => '<b>Categorie</b><br>
 			Hier kun je een nieuwe profiel categorie toevoegen.<br><br>
 			Indien je het label leeg laat, kun je het label internationaliseren in een taal bestand(<i>profile:categories:[naam]</i>).<br><br>
-			
+
 			Indien profiel types zijn gedefinieerd, kun je selecteren bij welk type deze categorie van toepassing is. Indien geen profiel type is geselecteerd is deze categorie op alle profielen van toepassing.',
   'profile_manager:tooltips:category_list' => '<b>Categorie�n</b><br>
 			Toont een lijst van alle geconfigureerde categorie�n.<br><br>
-			
+
 			<i>Standaard</i> is de categorie die van toepassing is op alle profielen.<br><br>
-			
+
 			Voeg velden toe aan de categorie�n door ze er op te slepen.<br><br>
-			
+
 			Klik op de categorie label om de weergegeven profiel velden te filteren. Klik op \'Alle velden weergeven\' om alle velden weer te geven.<br><br>
-			
+
 			Je kunt ook de volgorde van de categorie�n aanpassen door ze onderling te verslepen (<i>Standaard kan niet worden verplaatst</i>. <br><br>
-			
+
 			Klik op het bewerk icoon om de categorie te bewerken.',
   'profile_manager:tooltips:profile_type' => '<b>Profiel Type</b><br>
 			Hier kun je een nieuwe profiel type aanmaken.<br><br>
 			Indien je het label leeg laat, kun je het label internationaliseren in een taal bestand(<i>profile:types:[naam]</i>).<br><br>
 			Voeg een omschrijving toe die gebruikers kunnen zien wanneer ze het profieltype selecteren of laat het leeg om het te internationaliseren (<i>profile:types:[name]:description</i>).<br><br>
 			Je kunt dit profiel type toevoegen als filter op de Leden Zoek pagina<br><br>
-			
+
 			Indien er categorie�n zijn gedefinieerd kan we worden aangegeven welke categorie�n van toepassing zijn op dit profiel.',
   'profile_manager:tooltips:profile_type_list' => '<b>Profiel Types</b><br>
 			Toont een lijst van alle geconfigureerde profiel types<br><br>
