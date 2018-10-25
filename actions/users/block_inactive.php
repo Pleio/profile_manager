@@ -24,11 +24,20 @@ if (!empty($last_login)) {
 	if ($users) {
 		foreach ($users as $user) {
 			if ($user->time_created <= $last_login && $user->last_login == 0) {
-				remove_entity_relationship($user->guid, "member_of_site", $site->guid);
+				if ($user->ban('banned')) {
+					remove_entity_relationship($user->guid, "member_of_site", $site->guid);
+				} else {
+					register_error(elgg_echo('admin:user:ban:no'));
+				}
 			} else if ($user->last_login != 0) {
-				remove_entity_relationship($user->guid, "member_of_site", $site->guid);
+				if ($user->ban('banned')) {
+					remove_entity_relationship($user->guid, "member_of_site", $site->guid);
+				} else {
+					register_error(elgg_echo('admin:user:ban:no'));
+				}
 			}
 		}
+		system_message(elgg_echo('admin:user:ban:yes'));
 	} else {
 		system_message(elgg_echo("InvalidParameterException:NoDataFound"));
 		forward(REFERER);
