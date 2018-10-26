@@ -65,9 +65,15 @@ if (!empty($users)) {
 
 	$content .= "<br />" . elgg_view("input/button", array("value" => elgg_echo("profile_manager:admin:users:inactive:download"), "onclick" => "document.location.href='" . $download_link . "'", "class" => "elgg-button-action"));
 
+	$confirm_user_list = "";
+	foreach ($users as $user) {
+		if (($user->time_created <= $last_login && $user->last_login == 0) || $user->last_login != 0)  {
+			$confirm_user_list .= $user->name . " ";
+		}
+	}
 
 	$block_users_link = elgg_add_action_tokens_to_url("/action/profile_manager/users/block_inactive?last_login=" . $last_login);
-	$confirm_message =  elgg_echo("profile_manager:admin:users:inactive:confirm_block_users") . date("Y-m-d", $last_login);
+	$confirm_message =  elgg_echo("profile_manager:admin:users:inactive:confirm_block_users") . date("Y-m-d", $last_login) . ". " .  elgg_echo("profile_manager:admin:users:inactive:confirm_block_user_list") . $confirm_user_list;
 	$delete_link = elgg_view("output/confirmlink", array(
 		"text" =>  elgg_echo("profile_manager:admin:users:inactive:block_users"),
 		"class" => "elgg-button elgg-button-submit float-alt mvs",

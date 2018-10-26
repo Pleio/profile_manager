@@ -179,6 +179,7 @@ $english = array(
 	'profile_manager:admin:users:inactive:download' => "Download",
 	'profile_manager:admin:users:inactive:block_users' => "Block inactive users",
 	'profile_manager:admin:users:inactive:confirm_block_users' => "Block all inactive users, are you sure? Inactive users will be blocked if inactive since ",
+	'profile_manager:admin:users:inactive:confirm_block_user_list' => "The following users will be blocked: ",
 
 	// admin actions
 	'profile_manager:actions:title' => 'Actions',
