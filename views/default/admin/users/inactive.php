@@ -63,10 +63,25 @@ if (!empty($users)) {
 
 	$download_link = elgg_add_action_tokens_to_url("/action/profile_manager/users/export_inactive?last_login=" . $last_login);
 
+
+	$options = array(
+		"type" => "user",
+		"limit" => false,
+		"relationship" => "member_of_site",
+		"relationship_guid" => elgg_get_site_entity()->getGUID(),
+		"inverse_relationship" => true,
+		"site_guids" => false,
+		"joins" => array("JOIN " . $dbprefix . "users_entity ue ON e.guid = ue.guid"),
+		"wheres" => array("ue.last_login <= " . $last_login),
+		"order_by" => "ue.last_login"
+	);
+
+	$users_all_inactive = elgg_get_entities_from_relationship($options);
+
 	$content .= "<br />" . elgg_view("input/button", array("value" => elgg_echo("profile_manager:admin:users:inactive:download"), "onclick" => "document.location.href='" . $download_link . "'", "class" => "elgg-button-action"));
 
 	$confirm_user_list = "";
-	foreach ($users as $user) {
+	foreach ($users_all_inactive as $user) {
 		if (($user->time_created <= $last_login && $user->last_login == 0) || $user->last_login != 0)  {
 			$confirm_user_list .= $user->name . " ";
 		}
