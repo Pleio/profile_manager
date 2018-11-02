@@ -177,9 +177,12 @@ $english = array(
 	'profile_manager:admin:users:inactive:list' => "Inactive users",
 	'profile_manager:admin:users:inactive:never' => "Never",
 	'profile_manager:admin:users:inactive:download' => "Download",
-	'profile_manager:admin:users:inactive:block_users' => "Block inactive users",
-	'profile_manager:admin:users:inactive:confirm_block_users' => "Block all inactive users, are you sure? Inactive users will be blocked if inactive since ",
-	'profile_manager:admin:users:inactive:confirm_block_user_list' => "The following users will be blocked: ",
+	'profile_manager:admin:users:inactive:download_description' => 'Download all inactive users per date',
+	'profile_manager:admin:users:inactive:block_users' => "Block selected users",
+	'profile_manager:admin:users:inactive:confirm_block_users' => "Block all selected users, are you sure?",
+	"profile_manager:admin:users:inactive:bulk_delete:success" => "The selected users were blocked",
+	"profile_manager:admin:users:inactive:bulk_delete:error" => "An error occured while blocking the users, please try again",
+	'profile_manager:actions:error:non_selected' => 'None selected',
 
 	// admin actions
 	'profile_manager:actions:title' => 'Actions',

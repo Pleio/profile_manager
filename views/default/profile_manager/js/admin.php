@@ -52,6 +52,17 @@ $(document).ready(function(){
 		$(this).parent().remove();
 	});
 
+	$("#profile-manager-bulk-block-inactive input[name='checkall'][type='checkbox']").live("change", function() {
+
+		if ($(this).is(":checked")) {
+			// check
+			$("#profile-manager-bulk-block-inactive input[name='user_guids[]']").attr("checked", "checked");
+		} else {
+			// uncheck
+			$("#profile-manager-bulk-block-inactive input[name='user_guids[]']").removeAttr("checked");
+		}
+		});
+
 	// add buttons
 	$(".profile-manager-popup").fancybox();
 });
@@ -117,7 +128,7 @@ function filterCustomFields(category_guid){
 
 function changeFieldType(){
 	var selectedType = $("#custom_fields_form select[name='metadata_type']").val();
-	
+
 	$("#custom_fields_form .custom_fields_form_field_option").attr("disabled", "disabled");
 	$("#custom_fields_form .field_option_enable_" + selectedType).removeAttr("disabled");
 }
@@ -134,7 +145,7 @@ function changeFieldCategory(field, category_guid){
 			}
 			$(field).find(".custom_field").attr("rel", category_guid);
 			$(".custom_fields_category_selected a").click();
-				
+
 		} else {
 			alert(elgg.echo("profile_manager:actions:change_category:error:unknown"));
 		}
