@@ -6,7 +6,7 @@ $date = sanitise_int(get_input("last_login"));
 if ($date > 0) {
 	$last_login = $date;
 }
-
+echo elgg_echo("profile_manager:admin:users:inactive:block_users_description");
 $form_body = elgg_echo("profile_manager:admin:users:inactive:last_login") . ": ";
 $form_body .= elgg_view("input/date", array("name" => "last_login", "value" => $last_login, "timestamp" => true));
 $form_body .= elgg_view("input/submit", array("value" => elgg_echo("search")));
@@ -37,6 +37,7 @@ $users_time_created = elgg_get_entities_from_relationship($options);
 
 $users = array();
 foreach ($users_time_created as $user) {
+	error_log($user->email);
 	if ($user->last_login == 0 && $user->last_action <= $last_login) {
 		array_push($users, $user);
 	} elseif ($user->last_login <= $last_login && $user->last_action <= $last_login && $user->last_login != 0 && $user->last_action != 0) {
@@ -49,8 +50,10 @@ if (!empty($users)) {
 	$content .= "<tr>";
 	$content .= "<th class='center'>" . elgg_view("input/checkbox", array("name" => "checkall", "default" => false)) . "</th>";
 	$content .= "<th>" . elgg_echo("user") . "</th>";
+	$content .= "<th>" . elgg_echo("email") . "</th>";
+	$content .= "<th>" . elgg_echo("profile_manager:usersettings:statistics:label:timecreated") . "</th>";
 	$content .= "<th>" . elgg_echo("usersettings:statistics:label:lastlogin") . "</th>";
-	$content .= "<th>" . elgg_echo("banned") . "</th>";
+	$content .= "<th>" . elgg_echo("profile_manager:usersettings:statistics:label:lastaction") . "</th>";
 	$content .= "</tr>";
 
 	foreach ($users as $user) {
@@ -60,13 +63,20 @@ if (!empty($users)) {
 			"value" => $user->getGUID(),
 			"default" => false)) . "</td>";
 		$content .= "<td>" . elgg_view("output/url", array("text" => $user->name, "href" => $user->getURL())) . "</td>";
+		$content .= "<td>" . $user->email . "</td>";
+		$content .= "<td>" . elgg_view_friendly_time($user->time_created) . "</td>";
 		$user_last_login = $user->last_login;
 		if (empty($user_last_login)) {
 			$content .= "<td>" . elgg_echo("profile_manager:admin:users:inactive:never") . "</td>";
 		} else {
 			$content .= "<td>" . elgg_view_friendly_time($user_last_login) . "</td>";
 		}
-		$content .= "<td>" . elgg_echo("option:" . $user->banned) . "</td>";
+		$user_last_action = $user->last_action;
+		if (empty($user_last_action)) {
+			$content .= "<td>" . elgg_echo("profile_manager:admin:users:inactive:never") . "</td>";
+		} else {
+			$content .= "<td>" . elgg_view_friendly_time($user_last_action) . "</td>";
+		}
 		$content .= "</tr>";
 	}
 
@@ -100,44 +110,3 @@ if (!empty($users)) {
 } else {
 	$content = elgg_echo("notfound");
 }
-
-
-
-
-
-
-
-
-
-
-
-$options = array(
-	"type" => "user",
-	"limit" => false,
-	"relationship" => "member_of_site",
-	"relationship_guid" => elgg_get_site_entity()->getGUID(),
-	"inverse_relationship" => true,
-	"site_guids" => false,
-	"joins" => array("JOIN " . $dbprefix . "users_entity ue ON e.guid = ue.guid"),
-	"wheres" => array("ue.last_login <= " . $last_login),
-	"order_by" => "ue.last_login"
-);
-
-$users_all_inactive = elgg_get_entities_from_relationship($options);
-
-
-$confirm_user_list = "";
-foreach ($users_all_inactive as $user) {
-	if (($user->time_created <= $last_login && $user->last_login == 0) || $user->last_login != 0)  {
-		$confirm_user_list .= $user->name . " ";
-	}
-}
-
-$block_users_link = elgg_add_action_tokens_to_url("/action/profile_manager/users/block_inactive?last_login=" . $last_login);
-$confirm_message =  elgg_echo("profile_manager:admin:users:inactive:confirm_block_users") . date("Y-m-d", $last_login) . ". " .  elgg_echo("profile_manager:admin:users:inactive:confirm_block_user_list") . $confirm_user_list;
-$delete_link = elgg_view("output/confirmlink", array(
-	"text" =>  elgg_echo("profile_manager:admin:users:inactive:block_users"),
-	"class" => "elgg-button elgg-button-submit float-alt mvs",
-	"title" => elgg_echo("delete"),
-	"confirm" => $confirm_message,
-	"href" => $block_users_link ));

@@ -179,10 +179,37 @@ $english = array(
 	'profile_manager:admin:users:inactive:download' => "Download",
 	'profile_manager:admin:users:inactive:download_description' => 'Download all inactive users per date',
 	'profile_manager:admin:users:inactive:block_users' => "Block selected users",
+	'profile_manager:admin:users:inactive:block_users_description' => '
+	<p>This page gives an overview of accounts which are not used for a long time, we call this inactive accounts. Users can be selected and blocked in bulk.
+	The dates given according time created, last log in and last action will be compared with the given date. Accounts will show if:
+	</p><p>
+
+	<ul>
+	<li>1.</li>
+	<li>Datum last action is empty</li>
+	<li>Date last login is empty</li>
+	<li>Date created account is older than given date.</li>
+	</ul>
+	<br>
+	<ul>
+	<li>2.</li>
+	<li>Date last action is empty.</li>
+	<li>Date last login is filled but older than the given date.</li>
+	</ul>
+	<br>
+	<ul>
+	<li>3.</li>
+	<li>Date last action en date last login are both filled.</li>
+	<li>The least old of last login and last action is compared with date.</li>
+	</ul>
+	</p><hr>',
 	'profile_manager:admin:users:inactive:confirm_block_users' => "Block all selected users, are you sure?",
 	"profile_manager:admin:users:inactive:bulk_delete:success" => "The selected users were blocked",
 	"profile_manager:admin:users:inactive:bulk_delete:error" => "An error occured while blocking the users, please try again",
 	'profile_manager:actions:error:non_selected' => 'None selected',
+	'profile_manager:usersettings:statistics:label:timecreated' => 'Created on',
+	'profile_manager:usersettings:statistics:label:lastaction' => 'Last action',
+
 
 	// admin actions
 	'profile_manager:actions:title' => 'Actions',

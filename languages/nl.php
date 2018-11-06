@@ -119,10 +119,36 @@ $language = array (
   'profile_manager:admin:users:inactive:never' => 'Nooit',
   'profile_manager:admin:users:inactive:download' => 'Download',
   'profile_manager:admin:users:inactive:download_description' => 'Download alle inactieve gebruikers per datum',
-  'profile_manager:admin:users:inactive:block_users' => "Blokkeer geselecteerde gebruikers",
-  'profile_manager:admin:users:inactive:confirm_block_users' => "Alle geselecteerde gebruikers blokkeren, weet u het zeker?",
-  "profile_manager:admin:users:inactive:bulk_delete:success" => "De geselecteerde gebruikers zijn geblokkeerd",
-  "profile_manager:admin:users:inactive:bulk_delete:error" => "Er is een fout opgetreden tijdens het blokkeren van de gebruikers, probeer het nogmaals",
+  'profile_manager:admin:users:inactive:block_users' => 'Blokkeer geselecteerde gebruikers',
+  'profile_manager:admin:users:inactive:confirm_block_users' => 'Alle geselecteerde gebruikers blokkeren, weet u het zeker?',
+  'profile_manager:admin:users:inactive:bulk_delete:success' => 'De geselecteerde gebruikers zijn geblokkeerd',
+  'profile_manager:admin:users:inactive:bulk_delete:error' => 'Er is een fout opgetreden tijdens het blokkeren van de gebruikers, probeer het nogmaals',
+  'profile_manager:admin:users:inactive:block_users_description' => '
+      <p>Dit scherm heeft als doel zicht te krijgen op accounts die lang niet meer gebruikt zijn, dit noemen we niet actieve accounts. Indien gewenst kan men vervolgens de geselecteerde niet actieve accounts blokkeren.
+      De datum gegevens omtrent aanmaak, laatste inlog en laatste activiteit worden vergeleken met de opgegeven datum. Getoond worden de accounts waarbij:
+      </p><p>
+
+      <ul>
+      <li>1.</li>
+      <li>Datum laatste actie is leeg</li>
+      <li>Datum laatste inlog is leeg</li>
+      <li>Datum aanmaak account is ouder dan de opgegeven datum.</li>
+      </ul>
+      <br>
+      <ul>
+      <li>2.</li>
+      <li>Datum laatste actie is leeg.</li>
+      <li>Datum laatste inlog is gevuld maar ouder dan de opgegeven datum.</li>
+      </ul>
+      <br>
+      <ul>
+      <li>3.</li>
+      <li>Datum laatste actie en datum laatste inlog zijn beiden gevuld.</li>
+      <li>De minst oude van de twee data is ouder dan de opgegeven datum.</li>
+      </ul>
+      </p><hr>',
+	'profile_manager:usersettings:statistics:label:timecreated' => 'Aangemaakt op',
+	'profile_manager:usersettings:statistics:label:lastaction' => 'Laatste actie op',
   'profile_manager:actions:title' => 'Acties',
   'profile_manager:actions:reset:description' => 'Verwijderd alle custom profiel velden.',
   'profile_manager:actions:reset:confirm' => 'Weet je zeker dat je alle velden wilt verwijderen?',
