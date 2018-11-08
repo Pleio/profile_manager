@@ -34,7 +34,7 @@ if ($user->isBanned()) {
 		$about .= "</div>";
 	}
 }
-	
+
 echo '<div id="profile-details" class="elgg-body pll">';
 echo "<h2>{$user->name}</h2>";
 
@@ -52,7 +52,7 @@ $cats = $categorized_fields['categories'];
 $fields = $categorized_fields['fields'];
 
 $details_result = "";
-	
+
 if ($show_profile_type_on_profile != "no") {
 	if ($profile_type_guid = $user->custom_profile_type) {
 		if (($profile_type = get_entity($profile_type_guid)) && ($profile_type instanceof ProfileManagerCustomProfileType)) {
@@ -60,21 +60,21 @@ if ($show_profile_type_on_profile != "no") {
 		}
 	}
 }
-	
+
 if (count($cats) > 0) {
-			
+
 	// only show category headers if more than 1 category available
 	if (count($cats) > 1) {
 		$show_header = true;
 	} else {
 		$show_header = false;
 	}
-	
+
 	foreach ($cats as $cat_guid => $cat) {
 		$cat_title = "";
 		$field_result = "";
 		$even_odd = "even";
-		
+
 		if ($show_header) {
 			// make nice title
 			if ($cat_guid == -1) {
@@ -90,7 +90,7 @@ if (count($cats) > 0) {
 			} else {
 				$title = $cat;
 			}
-				
+
 			$params = array(
 				'text' => ' ',
 				'href' => "#",
@@ -98,14 +98,14 @@ if (count($cats) > 0) {
 				'rel' => 'toggle',
 			);
 			$collapse_link = elgg_view('output/url', $params);
-			
+
 			$cat_title = "<h3>" . $title . "</h3>\n";
 		}
-			
+
 		foreach ($fields[$cat_guid] as $field) {
-			
+
 			$metadata_name = $field->metadata_name;
-			
+
 			if ($metadata_name != "description") {
 				// give correct class
 				if ($even_odd != "even") {
@@ -113,13 +113,13 @@ if (count($cats) > 0) {
 				} else {
 					$even_odd = "odd";
 				}
-				
+
 				// make nice title
 				$title = $field->getTitle();
-				
+
 				// get user value
 				$value = $user->$metadata_name;
-				
+
 				// adjust output type
 				if ($field->output_as_tags == "yes") {
 					$output_type = "tags";
@@ -129,7 +129,7 @@ if (count($cats) > 0) {
 				} else {
 					$output_type = $field->metadata_type;
 				}
-				
+
 				if ($field->metadata_type == "url") {
 					$target = "_blank";
 					// validate urls
@@ -139,7 +139,7 @@ if (count($cats) > 0) {
 				} else {
 					$target = null;
 				}
-				
+
 				// build result
 				$field_result .= "<div class='" . $even_odd . "'>";
 				$field_result .= "<b>" . $title . "</b>:&nbsp;";
@@ -147,14 +147,14 @@ if (count($cats) > 0) {
 				$field_result .= "</div>\n";
 			}
 		}
-			
+
 		if (!empty($field_result)) {
 			$details_result .= $cat_title;
 			$details_result .= "<div>" . $field_result . "</div>";
 		}
 	}
 }
-	
+
 if (!empty($details_result)) {
 	echo "<div id='custom_fields_userdetails'>" . $details_result . "</div>";
 	if (elgg_get_plugin_setting("display_categories", "profile_manager") == "accordion") {
