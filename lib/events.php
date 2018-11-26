@@ -294,19 +294,10 @@ function profile_manager_pagesetup_event($event, $object_type, $object) {
 		return true;
     }
 
-	if (isset($_SESSION['profile_manager_complete'])) {
-		if (in_array($site->guid, $_SESSION['profile_manager_complete'])) {
-			return true;
-		} else {
-			array_push($_SESSION['profile_manager_complete'], $site->guid);
-		}
-	} else {
-		$_SESSION['profile_manager_complete'] = array();
-		array_push($_SESSION['profile_manager_complete'], $site->guid);
-    }
-
 	if (count(profile_manager_get_unfilled_mandatory_fields($user)) > 0) {
-		forward('/profile_manager/complete?redirect_uri=' . $_SERVER['REQUEST_URI']);
+        if (strpos($_SERVER['REQUEST_URI'], '/profile_manager/complete') !== 0) {
+            forward('/profile_manager/complete?redirect_uri=' . $_SERVER['REQUEST_URI']);
+        }
 	}
 
 	return true;
