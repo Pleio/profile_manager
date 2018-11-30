@@ -279,6 +279,11 @@ function profile_manager_pagesetup_event($event, $object_type, $object) {
 		return true;
 	}
 
+	// do not override admin views
+	if (elgg_in_context("admin")) {
+		return true;
+	}
+
 	$user = elgg_get_logged_in_user_entity();
 	$site = elgg_get_site_entity();
 
