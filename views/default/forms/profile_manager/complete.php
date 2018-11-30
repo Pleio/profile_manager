@@ -29,5 +29,13 @@
     echo elgg_view('input/submit', array(
         'value' => elgg_echo('save')
     ));
+
+    echo elgg_view('output/url', array(
+        'href' => 'action/logout',
+        'text' => elgg_echo('logout'),
+        'class' => 'elgg-button elgg-button-cancel',
+        'is_trusted' => true,
+    ));
+
     ?>
 </p>
