@@ -146,6 +146,12 @@ $language = array (
       <li>Datum laatste actie en datum laatste inlog zijn beiden gevuld.</li>
       <li>De minst oude van de twee data is ouder dan de opgegeven datum.</li>
       </ul>
+      <br>
+      <ul>
+      <li>4.</li>
+      <li>Datum laatste inlog is leeg. Aanmaak datum en laatste actie zijn gevuld.</li>
+      <li>De laatste actie is ouder dan de opgegeven datum.</li>
+      </ul>
       </p><hr>',
 	'profile_manager:usersettings:statistics:label:timecreated' => 'Aangemaakt op',
 	'profile_manager:usersettings:statistics:label:lastaction' => 'Laatste actie op',

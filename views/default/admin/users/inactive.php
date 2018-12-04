@@ -37,7 +37,6 @@ $users_time_created = elgg_get_entities_from_relationship($options);
 
 $users = array();
 foreach ($users_time_created as $user) {
-	error_log($user->email);
 	if ($user->last_login == 0 && $user->last_action <= $last_login) {
 		array_push($users, $user);
 	} elseif ($user->last_login <= $last_login && $user->last_action <= $last_login && $user->last_login != 0 && $user->last_action != 0) {
@@ -64,27 +63,49 @@ if (!empty($users)) {
 			"default" => false)) . "</td>";
 		$content .= "<td>" . elgg_view("output/url", array("text" => $user->name, "href" => $user->getURL())) . "</td>";
 		$content .= "<td>" . $user->email . "</td>";
-		$content .= "<td>" . elgg_view_friendly_time($user->time_created) . "</td>";
+		$content .= "<td>" . elgg_view("output/date", [ "value" => $user->time_created ]) . "</td>";
 		$user_last_login = $user->last_login;
 		if (empty($user_last_login)) {
 			$content .= "<td>" . elgg_echo("profile_manager:admin:users:inactive:never") . "</td>";
 		} else {
-			$content .= "<td>" . elgg_view_friendly_time($user_last_login) . "</td>";
+			$content .= "<td>" . elgg_view("output/date", [ "value" => $user_last_login ]) . "</td>";
 		}
 		$user_last_action = $user->last_action;
 		if (empty($user_last_action)) {
 			$content .= "<td>" . elgg_echo("profile_manager:admin:users:inactive:never") . "</td>";
 		} else {
-			$content .= "<td>" . elgg_view_friendly_time($user_last_action) . "</td>";
+			$content .= "<td>" . elgg_view("output/date", [ "value" => $user_last_action]) . "</td>";
 		}
 		$content .= "</tr>";
 	}
 
 	$content .= "</table>";
 
-	$options["count"] = true;
-	$count = elgg_get_entities_from_relationship($options);
 
+	$count_options = array(
+		"type" => "user",
+		"limit" => NULL,
+		"offset" => $offset,
+		"relationship" => "member_of_site",
+		"relationship_guid" => elgg_get_site_entity()->getGUID(),
+		"inverse_relationship" => true,
+		"site_guids" => false,
+		"joins" => array("JOIN " . $dbprefix . "users_entity ue ON e.guid = ue.guid"),
+		"wheres" => array("e.time_created <= " . $last_login ),
+		"order_by" => "ue.last_login"
+		);
+
+	$count_users_time_created = elgg_get_entities_from_relationship($count_options);
+	$count_users = array();
+	foreach ($count_users_time_created as $user) {
+		if ($user->last_login == 0 && $user->last_action <= $last_login) {
+			array_push($count_users, $user);
+		} elseif ($user->last_login <= $last_login && $user->last_action <= $last_login && $user->last_login != 0 && $user->last_action != 0) {
+			array_push($count_users, $user);
+		}
+	}
+
+	$count = count($count_users);
 	$content .= elgg_view("navigation/pagination", array("offset" => $offset, "limit" => $limit, "count" => $count));
 
 	$delete_button = elgg_view("input/submit", array(

@@ -202,6 +202,12 @@ $english = array(
 	<li>Date last action en date last login are both filled.</li>
 	<li>The least old of last login and last action is compared with date.</li>
 	</ul>
+	<br>
+	<ul>
+	<li>4.</li>
+	<li>Date last action is empty. Created date and last action are filled.</li>
+	<li>Last action is older than given date.</li>
+	</ul>
 	</p><hr>',
 	'profile_manager:admin:users:inactive:confirm_block_users' => "Block all selected users, are you sure?",
 	"profile_manager:admin:users:inactive:bulk_delete:success" => "The selected users were blocked",
