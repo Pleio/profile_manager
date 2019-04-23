@@ -363,7 +363,7 @@ function profile_manager_get_unfilled_mandatory_fields($user = null) {
 				($field->mandatory == 'yes' && $field->show_on_register == 'yes')
 			) {
 				$metadata_name = $field->metadata_name;
-				if (!isset($user->$metadata_name)) {
+				if ((!isset($user->$metadata_name)) || (empty($user->$metadata_name))) {
 					$return[] = $field;
 				}
 			}
