@@ -84,7 +84,7 @@ if (!empty($users)) {
 
 	$count_options = array(
 		"type" => "user",
-		"limit" => NULL,
+		"limit" => "2000",
 		"offset" => $offset,
 		"relationship" => "member_of_site",
 		"relationship_guid" => elgg_get_site_entity()->getGUID(),
